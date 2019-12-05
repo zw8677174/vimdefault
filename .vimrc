@@ -7,12 +7,17 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug '/usr/local/opt/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf.vim' 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'artur-shaik/vim-javacomplete2'
+
 
 call plug#end()
 
 
 "***************  tree  *********************
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 "autocmd VimEnter * wincmd p
 autocmd StdinReadPre * let s:std_in=1
 " 直接打开文件夹
@@ -46,3 +51,29 @@ set expandtab
 set autoindent
 set sw=4
 set tabstop=4 
+
+
+"***************** alias *********************
+map ¡ 1gt
+map ™ 2gt
+map £ 3gt
+map ¢ 4gt
+:nn ∞ 5gt
+:nn § 6gt
+:nn ¶ 7gt
+:nn • 8gt
+:nn ª 9gt
+:nn º :tablast<CR>
+
+nnoremap ƒ :Ag<ENTER>
+nnoremap <tab><tab> :bn<ENTER>
+nnoremap <s-tab> :bp<ENTER>
+nnoremap ∑ :bd<ENTER>
+ 
+
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+nmap <S-j> <Plug>(JavaComplete-Imports-Add)
+imap <S-j> <Plug>(JavaComplete-Imports-Add)
+imap <S-y> :bd
+
