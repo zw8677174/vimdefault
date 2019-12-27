@@ -11,7 +11,7 @@ Plug '/usr/local/opt/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim' 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'artur-shaik/vim-javacomplete2'
-
+Plug 'airblade/vim-rooter'
 
 call plug#end()
 
@@ -41,6 +41,13 @@ colorscheme solarized
 
 "***************** complete *********************
 
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+nmap \ <Plug>(JavaComplete-Imports-Add)
+nmap ∆ <Plug>(JavaComplete-Imports-Add)
+imap ∆ <Plug>(JavaComplete-Imports-Add)
+nmap ˚ <Plug>(JavaComplete-Imports-AddSmart)
+imap ˚ <Plug>(JavaComplete-Imports-AddSmart)
 
 "***************** style *********************
 set showmatch
@@ -66,14 +73,24 @@ map ¢ 4gt
 :nn º :tablast<CR>
 
 nnoremap ƒ :Ag<ENTER>
+nnoremap ∂ :Files<ENTER>
 nnoremap <tab><tab> :bn<ENTER>
 nnoremap <s-tab> :bp<ENTER>
 nnoremap ∑ :bd<ENTER>
+nnoremap ® :noh<ENTER>
+nnoremap ß :w<ENTER>
+nnoremap ç viwy
+nnoremap √ viwpviwy
+nnoremap œ :wq<ENTER>
  
+noremap ÷ :s/^/\/\/<ENTER>:noh<ENTER>
+noremap ÷÷ :s/\/\//<ENTER>:noh<ENTER>
+autocmd FileType python  vnoremap <buffer> ÷ :s/^/#<ENTER>:noh<ENTER>
+autocmd FileType python  vnoremap <buffer> ÷÷ :s/##//<ENTER>:noh<ENTER>
+
+map ¨ bvgu
 
 
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-nmap <S-j> <Plug>(JavaComplete-Imports-Add)
-imap <S-j> <Plug>(JavaComplete-Imports-Add)
-imap <S-y> :bd
 
+
+"*******************************
