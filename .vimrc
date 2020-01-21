@@ -444,17 +444,6 @@ set tabstop=4
 
 
 "***************** alias *********************
-map ¡ 1gt
-map ™ 2gt
-map £ 3gt
-map ¢ 4gt
-:nn ∞ 5gt
-:nn § 6gt
-:nn ¶ 7gt
-:nn • 8gt
-:nn ª 9gt
-:nn º :tablast<CR>
-
 nnoremap <ESC>d :Files<ENTER>
 nnoremap <ESC>f :Ag<ENTER>
 nnoremap <tab><tab> :bn<ENTER>
@@ -467,10 +456,8 @@ nnoremap <ESC>q :wq<ENTER>
  
 noremap <ESC>/ :s/^/\/\/<ENTER>:noh<ENTER>
 noremap <ESC>/<ESC>/ :s/\/\//<ENTER>:noh<ENTER>
-autocmd filetype python  vnoremap <buffer> <esc>/ :s/^/#<enter>:noh<enter>
-autocmd filetype python  vnoremap <buffer> <esc>/ :s/^/#<enter>:noh<enter>
-autocmd filetype php  vnoremap <buffer> <esc>/<esc>/ :s/##//<enter>:noh<enter>
-autocmd filetype php  vnoremap <buffer> <esc>/<esc>/ :s/##//<enter>:noh<enter>
+autocmd filetype python,php  vnoremap <buffer> <esc>/ :s/^/#<enter>:noh<enter>
+autocmd filetype python,php  vnoremap <buffer> <esc>/<esc>/ :s/##//<enter>:noh<enter>
 map <ESC>u :bvgu
 map <ESC>e :MRU<enter>
 
