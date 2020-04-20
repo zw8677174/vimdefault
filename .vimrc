@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'posva/vim-vue'
 Plug 'vim-airline/vim-airline'
@@ -14,10 +15,20 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'airblade/vim-rooter'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/mru.vim'
+Plug 'Chiel92/vim-autoformat'
 
 
 call plug#end()
 
+
+
+
+"***************  format  *********************
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "***************  tree  *********************
 "autocmd vimenter * NERDTree
@@ -36,7 +47,7 @@ map <F3> :NERDTreeToggle<CR>
 "***************** color *********************
 let g:solarized_termcolors=256
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 
 "***************** airline *********************
@@ -441,6 +452,7 @@ set expandtab
 set autoindent
 set sw=4
 set tabstop=4 
+set expandtab
 
 
 "***************** alias *********************
@@ -458,6 +470,6 @@ noremap <ESC>/ :s/^/\/\/<ENTER>:noh<ENTER>
 noremap <ESC>/<ESC>/ :s/\/\//<ENTER>:noh<ENTER>
 autocmd filetype python,php  vnoremap <buffer> <esc>/ :s/^/#<enter>:noh<enter>
 autocmd filetype python,php  vnoremap <buffer> <esc>/<esc>/ :s/##//<enter>:noh<enter>
-map <ESC>u :bvgu
+map <ESC>t :bvgu
 map <ESC>e :MRU<enter>
 
