@@ -11,19 +11,21 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'artur-shaik/vim-javacomplete2'
-"Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/mru.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/goyo.vim'
+Plug 'davidhalter/jedi-vim'
+
 
 
 call plug#end()
 
+set rtp+=~/.fzf
 
 "***************  writemod  *********************
 " up Goyo
