@@ -118,6 +118,7 @@ nnoremap <ESC>s :w<ENTER>
 nnoremap <ESC>c viwy
 nnoremap <ESC>v viwpviwy
 nnoremap <ESC>q :q<ENTER>
+nnoremap <ESC>a ggVG
  
 noremap <ESC>/ :s/^/\/\/<ENTER>:noh<ENTER>
 noremap <ESC>/<ESC>/ :s/\/\//<ENTER>:noh<ENTER>
