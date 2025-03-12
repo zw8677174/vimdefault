@@ -12,7 +12,7 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'junegunn/fzf.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'airblade/vim-rooter'
 Plug 'Yggdroot/indentLine'
@@ -67,7 +67,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 "如果是最后一个就关闭vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif 
-let g:NERDTreeWinPos='right'
+let g:NERDTreeWinPos='left'
 map <tab> :NERDTreeMirror<CR>
 map <tab> :NERDTreeToggle<CR>
 map <F3> :NERDTreeMirror<CR>
@@ -79,12 +79,14 @@ let NERDTreeShowHidden=1
 
 "***************** color *********************
 let g:solarized_termcolors=256
+set t_Co=256
 syntax enable
+"set background=light
 set background=dark
 colorscheme solarized
 
 "***************** airline *********************
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 "***************** complete *********************
 
@@ -108,25 +110,41 @@ set tabstop=4
 set expandtab
 
 
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+
 "***************** alias *********************
+nnoremap <ESC><ESC> :w<ENTER>
+nnoremap <ESC> :w<ENTER>
 nnoremap <ESC>d :Files<ENTER>
 nnoremap <ESC>f :Ag<ENTER>
 nnoremap <tab><tab> :bn<ENTER>
-nnoremap <s-tab> :bp<ENTER>
+nnoremap <tab> <C-w>w
 nnoremap <ESC>r :noh<ENTER>
 nnoremap <ESC>s :w<ENTER>
+nnoremap <ESC>w viw
 nnoremap <ESC>c viwy
 nnoremap <ESC>v viwpviwy
-nnoremap <ESC>q :q<ENTER>
-nnoremap <ESC>a ggVG
- 
+"nnoremap <ESC>q :q<ENTER>
+nnoremap <ESC>q :bdelete<ENTER>
+nnoremap  ggVG
+nnoremap <ESC>t<ESC>t :s/\(_\)\([a-z]\)/\U\2/g<ENTER>
+
 noremap <ESC>/ :s/^/\/\/<ENTER>:noh<ENTER>
 noremap <ESC>/<ESC>/ :s/\/\//<ENTER>:noh<ENTER>
 autocmd filetype python,php  vnoremap <buffer> <esc>/ :s/^/#<enter>:noh<enter>
 autocmd filetype python,php  vnoremap <buffer> <esc>/<esc>/ :s/##//<enter>:noh<enter>
+autocmd filetype go  vnoremap <buffer> <esc>/ :s/^/\/\/<enter>:noh<enter>
+autocmd filetype go  vnoremap <buffer> <esc>/<esc>/ :s/\/\///<enter>:noh<enter>
 map <ESC>t :bvgu
 map <ESC>e :MRU<enter>
 map <ESC>z zr
 map <ESC>x zm
 
 
+let g:ycm_gopls_binary_path = expand('$GOPATH/bin/gopls')
+
+
+set mouse=a
